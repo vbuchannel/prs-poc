@@ -3,10 +3,10 @@ $(document).ready(function() {
     PRS_URL_RCHP = 'http://vbu-channeldata-prs-service-dev.eu-west-1.elasticbeanstalk.com/v1/recommendation/en-us_rchp/';
     $.ajax({
         url : PRS_URL_RCHP + utag_data.VisitorId,
-        complete: function(response){
-            $(".first-element").innerText(response.responseText);
-        },
-        success : function(data){
+        success : function(data, text){
+            // Logging
+            $(".first-element").innerText(text);
+
             if (data != null && data.recommendations != null && data.recommendations.length > 0){
                 var count = 0;
                 var lastElementId = ".first-element";
