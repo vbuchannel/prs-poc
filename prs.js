@@ -7,7 +7,7 @@ $(document).ready(function() {
                 var count = 0;
                 data.recommendations.forEach(function(element, index, array){
                     if (count<4){
-                        var pfid = element.productId;
+                        var pfid = element.pfid;
                         $('#product_' + pfid).removeClass("hidden");
                         count++;
                     }
