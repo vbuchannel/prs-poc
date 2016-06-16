@@ -6,17 +6,20 @@ $(document).ready(function() {
         success : function(data){
             if (data != null && data.recommendations != null && data.recommendations.length > 0){
                 var count = 0;
-                var lastElement = $("first-element");
+                var lastElementId = ".first-element";
                 data.recommendations.forEach(function(element, index, array){
                     if (count < MAX_SHOWN_PRODUCTS ){
-                        var currentElement = $('#product_' + element.pfid);
-                        currentElement.insertAfter(lastElement);
+                        var productId = '#product_' + element.pfid;
+                        var currentElement = $(productId);
+                        currentElement.insertAfter(lastElementId);
                         currentElement.removeClass("hidden");
-                        lastElement = currentElement;
+                        lastElementId = productId;
                         count++;
                     }
                 });
 
+                // removing still hidden elements
+                $(".col-3.tiles.col-xs-6.hidden").remove();
             }
         }
     });
